@@ -34,3 +34,13 @@ featurize:
   - path: bottleneck_features_validation.npy
     md5: be23e6cf4a94a1ffb55d363710519ba5
     size: 26214528
+evaluate:
+  cmd: python evaluate.py
+  deps:
+  - path: metrics.csv
+    md5: 669126f6f86bbb8a0d5ecbf412f55e62
+    size: 842
+  outs:
+  - path: metrics.json
+    md5: 5104c298b1b09162001320c587676480
+    size: 2081

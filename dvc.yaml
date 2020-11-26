@@ -14,7 +14,12 @@ stages:
     - bottleneck_features_validation.npy
     - train.py
     outs:
+    - metrics.csv
     - model.h5
+  evaluate:
+    cmd: python evaluate.py
+    deps:
+    - metrics.csv
     metrics:
-    - metrics.csv:
+    - metrics.json:
         cache: false
