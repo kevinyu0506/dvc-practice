@@ -1,5 +1,5 @@
 stages:
-  data-preparation:
+  featurize:
     cmd: python data_preparation.py
     deps:
     - data

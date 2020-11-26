@@ -17,7 +17,7 @@ train:
   - path: model.h5
     md5: ffb8c288ec81e40da038d7f4c1e9cc69
     size: 8405536
-data-preparation:
+featurize:
   cmd: python data_preparation.py
   deps:
   - path: data
