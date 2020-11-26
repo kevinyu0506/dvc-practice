@@ -43,7 +43,7 @@ from tqdm.keras import TqdmCallback
 
 
 top_model_weights_path = 'model.h5'
-nb_train_samples = 2000
+nb_train_samples = 1000
 nb_validation_samples = 800
 epochs = 10
 batch_size = 10
