@@ -40,6 +40,8 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
 from keras.layers import Dropout, Flatten, Dense
 from keras import applications
+from keras.callbacks import CSVLogger
+from tqdm.keras import TqdmCallback
 
 # dimensions of our images.
 img_width, img_height = 150, 150
@@ -101,7 +103,9 @@ def train_top_model():
     model.fit(train_data, train_labels,
               epochs=epochs,
               batch_size=batch_size,
-              validation_data=(validation_data, validation_labels))
+              validation_data=(validation_data, validation_labels),
+              verbose=0,
+              callbacks=[TqdmCallback(), CSVLogger("metrics.csv")])
     model.save_weights(top_model_weights_path)
 
 
