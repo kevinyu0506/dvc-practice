@@ -1,13 +1,32 @@
 train:
   cmd: python train.py
   deps:
+  - path: bottleneck_features_train.npy
+    md5: bcc654c3bffa769603ea1cb786e8044c
+    size: 65536128
+  - path: bottleneck_features_validation.npy
+    md5: be23e6cf4a94a1ffb55d363710519ba5
+    size: 26214528
+  - path: train.py
+    md5: 279ae036092e440cd2caffa5941dbfa9
+    size: 2425
+  outs:
+  - path: metrics.csv
+    md5: 8c85240c165781a31526af8f4a504f84
+    size: 812
+  - path: model.h5
+    md5: ffb8c288ec81e40da038d7f4c1e9cc69
+    size: 8405536
+data-preparation:
+  cmd: python data_preparation.py
+  deps:
   - path: data
     md5: 3c0e2504cf96720a630e82a84f83112e.dir
     size: 64423905
     nfiles: 2807
-  - path: train.py
-    md5: 06861777f8937d2b3fd184ab23558682
-    size: 3630
+  - path: data_preparation.py
+    md5: b95796320d224af3381dbbb7da0e7108
+    size: 2413
   outs:
   - path: bottleneck_features_train.npy
     md5: bcc654c3bffa769603ea1cb786e8044c
@@ -15,9 +34,3 @@ train:
   - path: bottleneck_features_validation.npy
     md5: be23e6cf4a94a1ffb55d363710519ba5
     size: 26214528
-  - path: metrics.csv
-    md5: 93fae566daf8f4ccc23d6121933fbe97
-    size: 818
-  - path: model.h5
-    md5: 91f921e28aa4e75ddb070315be0e934c
-    size: 8405536

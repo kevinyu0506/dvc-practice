@@ -1,12 +1,19 @@
 stages:
-  train:
-    cmd: python train.py
+  data-preparation:
+    cmd: python data_preparation.py
     deps:
     - data
-    - train.py
+    - data_preparation.py
     outs:
     - bottleneck_features_train.npy
     - bottleneck_features_validation.npy
+  train:
+    cmd: python train.py
+    deps:
+    - bottleneck_features_train.npy
+    - bottleneck_features_validation.npy
+    - train.py
+    outs:
     - model.h5
     metrics:
     - metrics.csv:
