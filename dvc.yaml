@@ -1,25 +1,33 @@
 stages:
   featurize:
-    cmd: python data_preparation.py
+    cmd: python ./src/data_preparation.py
     deps:
     - data
-    - data_preparation.py
+    - ./src/config.py
+    - ./src/data_preparation.py
     outs:
-    - bottleneck_features_train.npy
-    - bottleneck_features_validation.npy
+    - ./model/feature/bottleneck_features_train.npy
+    - ./model/feature/bottleneck_features_validation.npy
+    - ./model/feature/bottleneck_features_test.npy
   train:
-    cmd: python train.py
+    cmd: python ./src/train.py
     deps:
-    - bottleneck_features_train.npy
-    - bottleneck_features_validation.npy
-    - train.py
+    - ./model/feature/bottleneck_features_train.npy
+    - ./model/feature/bottleneck_features_validation.npy
+    - ./src/config.py
+    - ./src/train.py
     outs:
-    - metrics.csv
-    - model.h5
+    - ./log/metrics.csv
+    - ./model/model.h5
+    - ./model/model.json
   evaluate:
-    cmd: python evaluate.py
+    cmd: python ./src/evaluate.py
     deps:
-    - metrics.csv
+    - ./model/feature/bottleneck_features_test.npy
+    - ./model/model.h5
+    - ./model/model.json
+    - ./src/config.py
+    - ./src/evaluate.py
     metrics:
-    - metrics.json:
+    - evaluation.json:
         cache: false

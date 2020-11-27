@@ -1,46 +1,70 @@
 train:
-  cmd: python train.py
+  cmd: python ./src/train.py
   deps:
-  - path: bottleneck_features_train.npy
+  - path: ./model/feature/bottleneck_features_train.npy
     md5: 945af44ba604ae438680295463f835fd
     size: 32768128
-  - path: bottleneck_features_validation.npy
+  - path: ./model/feature/bottleneck_features_validation.npy
     md5: be23e6cf4a94a1ffb55d363710519ba5
     size: 26214528
-  - path: train.py
-    md5: d1e9f253bc55fefe977829708c88ec65
-    size: 2425
+  - path: ./src/config.py
+    md5: ba06ce44d74b445f26fa8fafeb784323
+    size: 898
+  - path: ./src/train.py
+    md5: f4fb27ac66b09b23c1c44284881c6509
+    size: 2791
   outs:
-  - path: metrics.csv
-    md5: 669126f6f86bbb8a0d5ecbf412f55e62
-    size: 842
-  - path: model.h5
-    md5: 5ad8630545bbfd77d6e40ff9515030c2
+  - path: ./log/metrics.csv
+    md5: 43e15d5d564e29b44a8c7511f2af5df4
+    size: 845
+  - path: ./model/model.h5
+    md5: 418da5f48fd9d26c6c680454f1c22158
     size: 8405536
+  - path: ./model/model.json
+    md5: 90edcab97846a606f6d0a53dc87d8bbf
+    size: 1449
 featurize:
-  cmd: python data_preparation.py
+  cmd: python ./src/data_preparation.py
   deps:
+  - path: ./src/config.py
+    md5: ba06ce44d74b445f26fa8fafeb784323
+    size: 898
+  - path: ./src/data_preparation.py
+    md5: 2f8b3f7088e9a29e40e66f6baa350556
+    size: 3536
   - path: data
-    md5: 87a71bb2cb1a75af9fab53f5bc799f9d.dir
-    size: 41309759
-    nfiles: 1807
-  - path: data_preparation.py
-    md5: 85c407daedb5355927e4a5b99db70de8
-    size: 2413
+    md5: 3c2603fb3dd597aee8de2ffff17caf4c.dir
+    size: 45765457
+    nfiles: 2008
   outs:
-  - path: bottleneck_features_train.npy
+  - path: ./model/feature/bottleneck_features_test.npy
+    md5: de1f98f49ff65a2373f2162c6a737048
+    size: 6553728
+  - path: ./model/feature/bottleneck_features_train.npy
     md5: 945af44ba604ae438680295463f835fd
     size: 32768128
-  - path: bottleneck_features_validation.npy
+  - path: ./model/feature/bottleneck_features_validation.npy
     md5: be23e6cf4a94a1ffb55d363710519ba5
     size: 26214528
 evaluate:
-  cmd: python evaluate.py
+  cmd: python ./src/evaluate.py
   deps:
-  - path: metrics.csv
-    md5: 669126f6f86bbb8a0d5ecbf412f55e62
-    size: 842
+  - path: ./model/feature/bottleneck_features_test.npy
+    md5: de1f98f49ff65a2373f2162c6a737048
+    size: 6553728
+  - path: ./model/model.h5
+    md5: 418da5f48fd9d26c6c680454f1c22158
+    size: 8405536
+  - path: ./model/model.json
+    md5: 90edcab97846a606f6d0a53dc87d8bbf
+    size: 1449
+  - path: ./src/config.py
+    md5: ba06ce44d74b445f26fa8fafeb784323
+    size: 898
+  - path: ./src/evaluate.py
+    md5: d0eb02a9b018344dfe1e3e9593cfeb16
+    size: 1442
   outs:
-  - path: metrics.json
-    md5: 5104c298b1b09162001320c587676480
-    size: 2081
+  - path: evaluation.json
+    md5: 886702c9a919c934517146996116b452
+    size: 70

@@ -1,8 +1,3 @@
-.DS_Store
-
-/model.h5
 /bottleneck_features_train.npy
 /bottleneck_features_validation.npy
-/metrics.csv
 /bottleneck_features_test.npy
-/model.json
