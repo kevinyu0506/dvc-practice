@@ -56,20 +56,6 @@ nb_validation_samples = conf.nb_validation_samples
 nb_test_samples = conf.nb_test_samples
 batch_size = conf.batch_size
 
-## dimensions of our images.
-#img_width, img_height = 150, 150
-#
-#train_data_dir = 'data/train'
-#validation_data_dir = 'data/validation'
-#test_data_dir = 'data/test'
-#train_feature_path = './model/feature/bottleneck_features_train.npy'
-#valid_feature_path = './model/feature/bottleneck_features_validation.npy'
-#test_feature_path = './model/feature/bottleneck_features_test.npy'
-#nb_train_samples = 1000
-#nb_validation_samples = 800
-#nb_test_samples = 200
-#batch_size = 10
-
 
 def save_bottlebeck_features():
     datagen = ImageDataGenerator(rescale=1. / 255)

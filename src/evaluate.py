@@ -1,12 +1,6 @@
 import json
 import numpy as np
-from keras import applications
-from keras.models import Sequential
 from keras.models import model_from_json
-from keras.layers import Dropout, Flatten, Dense
-from keras.callbacks import CSVLogger
-from keras.preprocessing.image import ImageDataGenerator
-from tqdm.keras import TqdmCallback
 
 import config as conf
 
